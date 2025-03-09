@@ -43,4 +43,14 @@ mod tests {
         assert_eq!(list.peek(), Some(&67));
         assert_eq!(list.mut_peek().take(), Some(&mut 67));
     }
+    #[test]
+    fn works_storing_strings() {
+        let mut list = linked_list::LinkedList::new();
+
+        list.append("Hello".to_string());
+        list.append("World".to_string());
+
+        assert_eq!(list.pop(), Some("World".to_string()));
+        assert_eq!(list.pop(), Some("Hello".to_string()));
+    }
 }
