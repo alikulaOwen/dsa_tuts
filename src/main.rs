@@ -1,14 +1,21 @@
-struct Node<T> {
-    value: T,
-    next: Option<Box<Node<T>>>
-}
+// filepath: /dsa_tuts/dsa_tuts/src/main.rs
+mod linked_list;
 
-struct LinkedList<T> {
-    head: Option<Box<Node<T>>>
-    
-}
+use linked_list::LinkedList;
 
 fn main() {
-    let list: LinkedList<i32> = LinkedList { head: None };
-}
+    let mut list: LinkedList<i32> = LinkedList::new();
 
+    list.push(1);
+    list.push(2);
+    list.push(3);
+
+    println!("{:?}", list.peek().unwrap_or(&-1));
+
+    println!("{:?}", list.pop().unwrap_or(-1));
+
+    list.peek_mut().map(|value| *value = 42);
+
+    println!("{:?}", list.peek().unwrap_or(&-1));
+
+}
