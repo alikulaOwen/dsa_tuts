@@ -2,7 +2,7 @@ pub struct LinkedList<T> {
     head: Option<Box<Node<T>>>,
 }
 
-struct Node<T> {
+pub struct Node<T> {
     value: T,
     next: Option<Box<Node<T>>>,
 }
@@ -12,7 +12,7 @@ impl<T> LinkedList<T> {
         LinkedList { head: None }
     }
 
-    pub fn push(&mut self, value: T) {
+    pub fn append(&mut self, value: T) {
         let new_node = Box::new(Node {
             value,
             next: self.head.take(),
@@ -31,7 +31,7 @@ impl<T> LinkedList<T> {
         self.head.as_ref().map(|node| &node.value)
     }
 
-    pub fn peek_mut(&mut self) -> Option<&mut T> {
+    pub fn mut_peek(&mut self) -> Option<&mut T> {
         self.head.as_mut().map(|node| &mut node.value)
     }
 }
